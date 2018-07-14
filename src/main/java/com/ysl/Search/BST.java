@@ -1,5 +1,9 @@
 package com.ysl.Search;
 
+import com.ysl.util.IOUtil;
+
+import java.util.Scanner;
+
 /**
  * Created by shawn_lin on 2018/7/10.
  */
@@ -54,7 +58,7 @@ public class BST<Key extends Comparable<Key>,Value> {
     }
 
     public void put(Key key,Value value){
-        put(head,key,value);
+        head = put(head,key,value);
     }
 
     public int size(){
@@ -89,23 +93,85 @@ public class BST<Key extends Comparable<Key>,Value> {
         return get(head,key);
     }
 
-    private void delete(Key key){
+    public void delete(Key key){
+        head = delete(head,key);
+    }
+
+    /**
+     *  删除任何一个节点
+     *  节点情况: (1)没有子节点（2）只有一个子节点 （3）有两个子节点
+     *
+     *
+     * @param node
+     * @param key
+     * @return
+     */
+    private Node delete(Node node,Key key){
         //TODO 文档介绍
+        if(node == null){
+            return null;
+        }
+        int cmp = key.compareTo(node.key);
+        if(cmp < 0){
+            node.left = delete(node.left,key);
+        }else if(cmp > 0){
+            node.right = delete(node.right,key);
+        }else {
+            if(node.right==null){
+                return node.left;
+            }
+            if(node.left == null){
+                return node.right;
+            }
+            Node temp = node;
+            node = min(node.right);
+            node.right = deleteMin(node.right);
+            node.left = temp.left;
+        }
+        node.N = size(node.left) + size(node.right) +1;
+        return node;
+    }
+
+
+    public void deleteMin(){
+        head = deleteMin(head);
     }
 
     /**
      * 删除最小的键
-     * (1)递归检索左子树，直到空链接
+     * (1)递归检索左子树，直到空的链接，那么这个节点就是最小的键
+     * (2)返回最小节点的右节点作为父节点的左节点，由此最小节点没有了引用，会被gc
+     * (3)更新链接 和节点计数器
      * @param node
      */
-    private void deleteMin(Node node){
-        if(node == null){
-
+    private Node deleteMin(Node node){
+        if(node.left==null){
+            return node.right;
         }
+
+        node.left = deleteMin(node.left);
+        node.N = size(node.left)+size(node.right)+1;
+        return node;
     }
 
-    private void deleteMax(){
+    /**
+     * 删除最大的键
+     * （1）递归检索右子树，直到空的链接，那么这个节点就是最大的键
+     * （2）返回最大节点的左子树给父节点的右子树
+     * （3）更新链接 和节点计数器
+     * @param node
+     */
+    private Node deleteMax(Node node){
+        if(node.right==null){
+            return node.left;
+        }
+        node.right = deleteMax(node.right);
+        node.N = size(node.left) + size(node.right) + 1;
+        return node;
+    }
 
+    public void deleteMax(){
+        head = deleteMax(head);
     }
 
     public Key min(){
@@ -226,5 +292,16 @@ public class BST<Key extends Comparable<Key>,Value> {
 
     public int rank(Key key){
         return rank(head,key);
+    }
+
+    public static void main(String[] args) {
+        BST<String,Integer> bst = new BST<String,Integer>();
+        Scanner scanner = IOUtil.readFile();
+        int count  = 0;
+        while (scanner.hasNext()){
+            String key = scanner.next();
+            bst.put(key,count++);
+        }
+        bst.deleteMin();
     }
 }
