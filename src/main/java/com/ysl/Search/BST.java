@@ -1,6 +1,7 @@
 package com.ysl.Search;
 
 import com.ysl.util.IOUtil;
+import edu.princeton.cs.algs4.Queue;
 
 import java.util.Scanner;
 
@@ -293,6 +294,39 @@ public class BST<Key extends Comparable<Key>,Value> {
     public int rank(Key key){
         return rank(head,key);
     }
+
+    /**
+     * 范围查找Key
+     *
+     *
+     */
+    private void keys(Node node, Queue<Key> queue, Key lo, Key li){
+        if(node == null){
+            return;
+        }
+        int cmpLo = lo.compareTo(node.key);
+        int cmpLn = li.compareTo(node.key);
+        if(cmpLo<0){
+            keys(node.left,queue,lo,li);
+        }
+        if(cmpLn>0){
+            keys(node.right,queue,lo,li);
+        }
+        if(cmpLo>=0&&cmpLn<=0){
+            queue.enqueue(node.key);
+        }
+    }
+
+    public Iterable<Key> keys(Key lo,Key li){
+        Queue<Key> queue = new Queue<Key>();
+        keys(head,queue,lo,li);
+        return queue;
+    }
+
+    public Iterable<Key> keys(){
+        return keys(min(),max());
+    }
+
 
     public static void main(String[] args) {
         BST<String,Integer> bst = new BST<String,Integer>();
