@@ -1,7 +1,7 @@
 package com.ysl.Search;
 
 import com.ysl.util.IOUtil;
-import edu.princeton.cs.algs4.Queue;
+//import edu.princeton.cs.algs4.Queue;
 
 import java.util.Scanner;
 
@@ -22,7 +22,7 @@ public class BST<Key extends Comparable<Key>,Value> {
      * （2）键之间有顺序之分以支持高效的查找
      *  (3) 每个节点都只有左右两个链接
      */
-    private Node head;
+   /* private Node head;
 
     class Node{
         private Node left;
@@ -98,7 +98,7 @@ public class BST<Key extends Comparable<Key>,Value> {
         head = delete(head,key);
     }
 
-    /**
+    *//**
      *  删除任何一个节点
      *  节点情况: (1)没有子节点（2）只有一个子节点 （3）有两个子节点
      *
@@ -106,7 +106,7 @@ public class BST<Key extends Comparable<Key>,Value> {
      * @param node
      * @param key
      * @return
-     */
+     *//*
     private Node delete(Node node,Key key){
         //TODO 文档介绍
         if(node == null){
@@ -138,13 +138,13 @@ public class BST<Key extends Comparable<Key>,Value> {
         head = deleteMin(head);
     }
 
-    /**
+    *//**
      * 删除最小的键
      * (1)递归检索左子树，直到空的链接，那么这个节点就是最小的键
      * (2)返回最小节点的右节点作为父节点的左节点，由此最小节点没有了引用，会被gc
      * (3)更新链接 和节点计数器
      * @param node
-     */
+     *//*
     private Node deleteMin(Node node){
         if(node.left==null){
             return node.right;
@@ -155,13 +155,13 @@ public class BST<Key extends Comparable<Key>,Value> {
         return node;
     }
 
-    /**
+    *//**
      * 删除最大的键
      * （1）递归检索右子树，直到空的链接，那么这个节点就是最大的键
      * （2）返回最大节点的左子树给父节点的右子树
      * （3）更新链接 和节点计数器
      * @param node
-     */
+     *//*
     private Node deleteMax(Node node){
         if(node.right==null){
             return node.left;
@@ -249,7 +249,7 @@ public class BST<Key extends Comparable<Key>,Value> {
         }
     }
 
-    /**
+    *//**
      * 查找排名为K的键（递归实现）即树中正好有K个键小于它
      * （1）左子树的节点数大于K，则在左子树里面寻找
      * （2）左子树的节点数小于K,则在右子树里面寻找
@@ -257,7 +257,7 @@ public class BST<Key extends Comparable<Key>,Value> {
      *
      * @param k
      * @return
-     */
+     *//*
     public Node select(Node node,int k){
         if(node == null){
             return null;
@@ -272,11 +272,11 @@ public class BST<Key extends Comparable<Key>,Value> {
         }
     }
 
-    /**
+    *//**
      * 给键排名
      * @param key
      * @return
-     */
+     *//*
     public int rank(Node node,Key key){
         if(node == null){
             return 0;
@@ -295,11 +295,11 @@ public class BST<Key extends Comparable<Key>,Value> {
         return rank(head,key);
     }
 
-    /**
+    *//**
      * 范围查找Key
      *
      *
-     */
+     *//*
     private void keys(Node node, Queue<Key> queue, Key lo, Key li){
         if(node == null){
             return;
@@ -337,5 +337,5 @@ public class BST<Key extends Comparable<Key>,Value> {
             bst.put(key,count++);
         }
         bst.deleteMin();
-    }
+    }*/
 }

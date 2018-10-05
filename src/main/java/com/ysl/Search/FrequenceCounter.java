@@ -3,7 +3,7 @@ package com.ysl.Search;
 
 import com.ysl.util.IOUtil;
 
-import edu.princeton.cs.algs4.StdOut;
+//import edu.princeton.cs.algs4.StdOut;
 
 import java.util.Scanner;
 
