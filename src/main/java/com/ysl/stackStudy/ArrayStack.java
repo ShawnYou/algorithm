@@ -1,10 +1,6 @@
 package com.ysl.stackStudy;
 
-/**
- * @author aarony
- * @Created 2018-10-08 8:53
- * @E-mail aarony@synnex.com
- */
+
 public class ArrayStack {
     /**
      * 数组实现顺序栈

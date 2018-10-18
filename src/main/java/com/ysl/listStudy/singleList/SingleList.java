@@ -1,10 +1,6 @@
 package com.ysl.listStudy.singleList;
 
-/**
- * @author aarony
- * @Created 2018-10-04 14:21
- * @E-mail aarony@synnex.com
- */
+
 public class SingleList {
     /**
      * 单链表

@@ -1,10 +1,6 @@
 package com.ysl.listStudy.joseph;
 
-/**
- * @author aarony
- * @Created 2018-10-04 15:49
- * @E-mail aarony@synnex.com
- */
+
 public class JosephProblem {
     /**
      * 双向循环链表实现约瑟夫环

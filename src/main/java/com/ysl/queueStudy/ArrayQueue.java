@@ -1,10 +1,6 @@
 package com.ysl.queueStudy;
 
-/**
- * @author aarony
- * @Created 2018-10-10 14:40
- * @E-mail aarony@synnex.com
- */
+
 
 /**
  * 数组实现队列

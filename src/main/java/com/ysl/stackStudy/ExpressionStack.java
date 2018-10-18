@@ -1,10 +1,6 @@
 package com.ysl.stackStudy;
 
-/**
- * @author aarony
- * @Created 2018-10-08 10:53
- * @E-mail aarony@synnex.com
- */
+
 public class ExpressionStack {
     /**
      * 两个栈 实现算术表达式求值

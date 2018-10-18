@@ -2,11 +2,7 @@ package com.ysl.queueStudy;
 
 
 
-/**
- * @author aarony
- * @Created 2018-10-10 16:17
- * @E-mail aarony@synnex.com
- */
+
 
 
 /**

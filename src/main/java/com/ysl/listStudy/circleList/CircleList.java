@@ -1,10 +1,6 @@
 package com.ysl.listStudy.circleList;
 
-/**
- * @author aarony
- * @Created 2018-10-04 14:58
- * @E-mail aarony@synnex.com
- */
+
 public class CircleList {
 
 

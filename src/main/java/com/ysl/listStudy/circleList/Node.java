@@ -1,10 +1,6 @@
 package com.ysl.listStudy.circleList;
 
-/**
- * @author aarony
- * @Created 2018-10-04 15:23
- * @E-mail aarony@synnex.com
- */
+
 public class Node<T> {
     public T t;
     public Node next;

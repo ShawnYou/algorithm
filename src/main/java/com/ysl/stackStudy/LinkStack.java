@@ -1,12 +1,6 @@
 package com.ysl.stackStudy;
 
-import java.util.Stack;
 
-/**
- * @author aarony
- * @Created 2018-10-08 10:09
- * @E-mail aarony@synnex.com
- */
 public class LinkStack<T> {
     /**
      * 链式栈

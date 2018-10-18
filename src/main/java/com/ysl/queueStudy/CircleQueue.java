@@ -1,10 +1,6 @@
 package com.ysl.queueStudy;
 
-/**
- * @author aarony
- * @Created 2018-10-10 16:56
- * @E-mail aarony@synnex.com
- */
+
 
 /**
  * 循环队列的实现
