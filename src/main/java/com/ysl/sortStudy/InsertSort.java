@@ -5,13 +5,15 @@ package com.ysl.sortStudy;
 /**
  * 插入排序
  */
-public class InsertSort {
-    public static int[] insertSort(int[] arr,int n){
+public class InsertSort implements Sort{
+
+    @Override
+    public int[] doSort(int[] arr) {
         if(arr.length<=1){
             return arr;
         }
 
-        for (int i = 1; i < n; i++) {
+        for (int i = 1; i < arr.length; i++) {
             int value = arr[i];
             int j = i-1;
             for (;j>=0;j--){
@@ -27,11 +29,8 @@ public class InsertSort {
         return arr;
     }
 
-    public static void main(String[] args) {
-        int[] arr = new int[]{4,5,6,1,3,2};
-
-        int[] temp = insertSort(arr,6);
-
-
+    @Override
+    public int[] doSortPlus(int[] arr) {
+        return new int[0];
     }
 }
