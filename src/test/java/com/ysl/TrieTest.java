@@ -12,7 +12,7 @@ import java.util.List;
  * Created by shawn_lin on 2019/2/24.
  */
 
-public class TrieTest extends AlgorithmApplicationTests{
+public class TrieTest extends BaseTest {
 
     private static Trie trie = new Trie();
 

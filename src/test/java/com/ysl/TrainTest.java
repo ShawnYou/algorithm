@@ -9,7 +9,7 @@ import org.junit.Test;
 /**
  * Created by shawn_lin on 2019/2/24.
  */
-public class TrainTest extends AlgorithmApplicationTests{
+public class TrainTest extends BaseTest {
     private static RouteNetwork routeNetwork = new RouteNetwork();
     private Station A = new Station("A");
     private Station B = new Station("B");

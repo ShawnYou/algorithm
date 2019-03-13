@@ -1,4 +1,4 @@
-package com.ysl.Search;
+package com.ysl.search;
 
 /**
  * Created by shawn_lin on 2018/7/8.

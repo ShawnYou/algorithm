@@ -7,61 +7,11 @@ package com.ysl.sortStudy;
  * 适合大规模的数据排序
  */
 
-//TODO  need fix bug
 public class MergeSort implements Sort{
     @Override
     public int[] doSort(int[] arr) {
-        return mergeSortRecursion(arr,0,arr.length-1);
-    }
-
-    private static int[] mergeSortRecursion(int[] arr,int pre,int tail){
-        //终止条件
-        if(pre >= tail){
-            return arr;
-        }
-
-        int mid = (pre+tail)/2;
-        mergeSortRecursion(arr,0,mid);
-        mergeSortRecursion(arr,mid+1,tail);
-
-        //将最后逇两个数组 合并成一个数组
-        return merge(arr,pre,mid,tail);
-    }
-
-    public static int[] merge(int[] arr,int pre,int mid,int tail){
-        //申请一个和arr[pre...tail]大小的临时数组
-        int[] temp = new int[tail-pre+1];
-        int i = pre;
-        int j = mid+1;
-        int k  = 0;
-        while (i<=mid && j<=tail){
-            if(arr[i] > arr[j]){
-                temp[k++] = arr[j++];
-            }else {
-                temp[k++] = arr[i++];
-            }
-        }
-
-        //找到还有剩余的数组
-        int start = i;
-        int end = mid;
-        if(j<=tail){
-            start = j;
-            end = tail;
-        }
-
-        //将数组剩余的元素放在临时数组
-        while (start<=end){
-            temp[k++] = arr[start++];
-        }
-
-        //将临时数组 拷贝回原数组
-        for (int l = 0; l < tail - pre; l++) {
-            arr[pre+i] = temp[i];
-        }
-
+        mergeSort(arr,0,arr.length-1);
         return arr;
-
     }
 
     @Override
@@ -69,9 +19,55 @@ public class MergeSort implements Sort{
         return new int[0];
     }
 
+    private void mergeSort(int[] data,int front,int end){
+        if(front >= end){
+            return;
+        }
+
+        int mid = (front+end)/2;
+        mergeSort(data,front,mid);
+        mergeSort(data,mid+1,end);
+
+        merge(data,front,mid,end);
+    }
+
+    private void merge(int[] data,int front,int mid,int end){
+        int[] temp = new int[end-front+1];
+        int f = front;
+        int m = mid+1;
+        int k = 0;
+        while (f <= mid && m <= end){
+            if(data[f]<data[m]){
+                temp[k++] = data[f++];
+            }else {
+                temp[k++] = data[m++];
+            }
+        }
+
+        //判断哪个数组还有剩余
+        int startIndex = f;
+        int endIndex = mid;
+        if(m<=end){
+            startIndex = m;
+            endIndex = end;
+        }
+
+        while (startIndex<=endIndex){
+            temp[k++] = data[startIndex++];
+        }
+
+        //将临时数组 赋值给原数组
+        for(int i =0;i<end-front+1;i++){
+            data[front+i] = temp[i];
+        }
+
+    }
+
     public static void main(String[] args) {
-        int[] arr = new int[]{3,1,9,3,5,7};
-        MergeSort mergeSort = new MergeSort();
-        int[] result = mergeSort.doSort(arr);
+        int[] testData = new int[]{3,1,4,6,2,9,8,0,7,5};
+        MergeSort mergeSort1 = new MergeSort();
+        mergeSort1.doSort(testData);
+
+        System.out.println(testData);
     }
 }
